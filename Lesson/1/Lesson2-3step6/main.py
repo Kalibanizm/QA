@@ -3,16 +3,17 @@ import time, math
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-link = "http://suninjuly.github.io/alert_accept.html"
+link = "http://suninjuly.github.io/redirect_accept.html"
 browser = webdriver.Chrome()
 browser.get(link)
 
 try:
     browser.find_element(By.CLASS_NAME, 'btn').click()
 
-    confirm = browser.switch_to.alert
-    confirm.accept()
+    new_window = browser.window_handles[1]
+    browser.switch_to.window(new_window)
 
+    
     input = browser.find_element(By.CSS_SELECTOR, '#input_value').text
          
     answer = str(math.log(abs(12*math.sin(int(input)))))
