@@ -1,0 +1,1 @@
+This repo is for training QA automation by stepik.org
